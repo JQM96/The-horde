@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
         Vector3 dir = transform.up;
 
         rb.velocity = dir * speed;
+
+        Destroy(gameObject, 3.5f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
