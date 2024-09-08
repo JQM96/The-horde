@@ -25,23 +25,17 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, 3.5f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Health healthComponent = collision.gameObject.GetComponent<Health>();
-        if (healthComponent != null)
-        {
-            healthComponent.TakeDamage(damage);
-
-            Destroy(gameObject);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Health healthComponent = collision.gameObject.GetComponent<Health>();
         if (healthComponent != null)
         {
             healthComponent.TakeDamage(damage);
+
+            if (pierce == false)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
