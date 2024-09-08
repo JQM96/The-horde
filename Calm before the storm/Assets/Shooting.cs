@@ -60,4 +60,12 @@ public class Shooting : MonoBehaviour
             }
         }
     }
+
+    public void ChangeCurrentWeapon(Weapon newWeapon)
+    {
+        currentWeapon = newWeapon;
+        currentMag = currentWeapon.magSize;
+        canFire = true;
+        reloading = false;
+    }
 }
