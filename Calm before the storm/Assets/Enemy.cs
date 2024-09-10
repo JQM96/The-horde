@@ -1,26 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private float damage;
     [SerializeField] private float attackRate;
+    [SerializeField] private Knockback knockback;
+    [SerializeField] private float stunTime;
 
+    private GameObject target;
     private bool canAttack;
     private float attackTimer;
     private float nextAttackTime;
+    private bool isStunned;
+    private float stunnedTimer;
 
-    // Start is called before the first frame update
     void Start()
     {
         target = FindObjectOfType<Movement>().gameObject;
+        knockback.OnKnockBack += Knockback_OnKnockBack;
     }
 
-    // Update is called once per frame
+    private void Knockback_OnKnockBack(object sender, EventArgs e)
+    {
+        Stun();
+    }
+
     void Update()
     {
         if (target != null)
@@ -39,14 +48,22 @@ public class Enemy : MonoBehaviour
                     canAttack = true;
                 }
             }
-            else 
+
+            if (isStunned == false)
             {
                 dir.Normalize();
 
                 rb.velocity = dir * speed;
+                transform.eulerAngles = new Vector3(0, 0, angle);
             }
-
-            transform.eulerAngles = new Vector3(0, 0, angle);
+            else
+            {
+                stunnedTimer += Time.deltaTime;
+                if (stunnedTimer >= stunTime)
+                {
+                    isStunned = false;
+                }
+            }
         }
     }
 
@@ -64,5 +81,11 @@ public class Enemy : MonoBehaviour
                 attackTimer = 0;
             }
         }
+    }
+
+    public void Stun()
+    {
+        isStunned = true;
+        stunnedTimer = 0;
     }
 }

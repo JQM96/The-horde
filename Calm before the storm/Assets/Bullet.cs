@@ -37,6 +37,14 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        Knockback knockBackComponent = collision.gameObject.GetComponent<Knockback>();
+        if (knockBackComponent != null)
+        {
+            Vector2 direction = (gameObject.transform.position - collision.gameObject.transform.position) * -1;
+
+            knockBackComponent.ApplyKnockBack(damage, direction);
+        }
     }
 
     public void SetBulletProperties(float newSpeed, float newDamage, bool isPierce)
