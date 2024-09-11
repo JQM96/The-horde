@@ -124,4 +124,17 @@ public class Shooting : MonoBehaviour
         newWeapon.currentMag = newWeapon.magSize;
         weapons.Add(newWeapon);
     }
+
+    public void AddMagsizeToAmmoCurrentWeapon()
+    {
+        if (currentWeapon.infiniteAmmo == true)
+        {
+            if (currentWeaponIndex + 1 < weapons.Count)
+            {
+                weapons[currentWeaponIndex + 1].ammo += weapons[currentWeaponIndex + 1].magSize;
+            }
+        }
+        else
+            currentWeapon.ammo += currentWeapon.magSize;
+    }
 }
