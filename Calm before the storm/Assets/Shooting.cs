@@ -15,7 +15,6 @@ public class Shooting : MonoBehaviour
     private bool canFire = true;
     private float nextShotTime;
     private float fireTimer;
-    private int currentMag;
     private bool reloading;
     private float reloadTimer;
 
@@ -30,11 +29,12 @@ public class Shooting : MonoBehaviour
         }
 
         if (currentWeapon != null)
-            currentMag = currentWeapon.magSize;
+            currentWeapon.currentMag = currentWeapon.magSize;
     }
 
     private void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             currentWeaponIndex -= 1;
@@ -67,7 +67,22 @@ public class Shooting : MonoBehaviour
                 reloadTimer += Time.deltaTime;
                 if (reloadTimer >= currentWeapon.reloadTime)
                 {
-                    currentMag = currentWeapon.magSize;
+                    if (currentWeapon.infiniteAmmo)
+                    {
+                        currentWeapon.currentMag = currentWeapon.magSize;
+                    }
+                    else if (currentWeapon.ammo < currentWeapon.magSize)
+                    {
+                        currentWeapon.currentMag = currentWeapon.ammo;
+                        currentWeapon.ammo = 0;
+                    }
+                    else
+                    {
+                        currentWeapon.currentMag = currentWeapon.magSize;
+                        currentWeapon.ammo -= currentWeapon.magSize;
+                    }
+
+
                     reloading = false;
                 }
             }
@@ -75,7 +90,7 @@ public class Shooting : MonoBehaviour
 
         if (reloading == false && canFire == true && Input.GetKey(KeyCode.Mouse0))
         {
-            if (currentMag <= 0)
+            if (currentWeapon.currentMag <= 0)
             {
                 reloading = true;
                 reloadTimer = 0;
@@ -90,7 +105,7 @@ public class Shooting : MonoBehaviour
                     canFire = false;
                     nextShotTime = 1 / currentWeapon.fireRate;
                     fireTimer = 0;
-                    currentMag -= 1;
+                    currentWeapon.currentMag -= 1;
                 }
             }
         }
@@ -99,13 +114,14 @@ public class Shooting : MonoBehaviour
     public void ChangeCurrentWeapon(Weapon newWeapon)
     {
         currentWeapon = newWeapon;
-        currentMag = currentWeapon.magSize;
+
         canFire = true;
         reloading = false;
     }
 
     public void AddWeapon(Weapon newWeapon)
     {
+        newWeapon.currentMag = newWeapon.magSize;
         weapons.Add(newWeapon);
     }
 }

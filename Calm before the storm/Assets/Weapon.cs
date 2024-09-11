@@ -12,6 +12,9 @@ public class Weapon : ScriptableObject
     public float fireRate;
     public float reloadTime;
     public int magSize;
+    public int ammo;
+    public bool infiniteAmmo;
+    public float currentMag;
 
     //Bullet pattern?
 }
