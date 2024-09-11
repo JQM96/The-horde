@@ -9,7 +9,10 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 playerPos = new Vector3(target.position.x, target.position.y, zOffset);
-        transform.position = playerPos;
+        if (target != null)
+        {
+            Vector3 playerPos = new Vector3(target.position.x, target.position.y, zOffset);
+            transform.position = playerPos;
+        }
     }
 }

@@ -499,6 +499,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 179270380}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &179270380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +654,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 458488864}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &458488864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,6 +1116,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 841934124}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &841934124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1265,6 +1271,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 862339319}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &862339319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,6 +1667,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 989831825}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!50 &989831824
 Rigidbody2D:
   serializedVersion: 4
@@ -1967,6 +1977,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 1220787192}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &1220787192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2080,6 +2092,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1695901302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695901304}
+  - component: {fileID: 1695901303}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1695901303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695901302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e242a2433b6bfd441a017b234210b3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1695901304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695901302}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1802251786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2260,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 1802251791}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &1802251791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,6 +2500,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 1834011627}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &1834011627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2679,6 +2739,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 1914888182}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &1914888182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,6 +2978,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 1996284651}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &1996284651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3153,6 +3217,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 2084749146}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &2084749146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3336,7 +3402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d0da1b80cc2404fb0fd9bdb1a600f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 9999
+  health: 100
 --- !u!1 &2131457719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3545,6 +3611,8 @@ MonoBehaviour:
   attackRate: 1
   knockback: {fileID: 2141114327}
   stunTime: 0.25
+  enemeyRadiusDetection: 1
+  separationRadius: 0.75
 --- !u!114 &2141114327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,3 +3661,4 @@ SceneRoots:
   - {fileID: 1834011628}
   - {fileID: 2084749147}
   - {fileID: 1168646227}
+  - {fileID: 1695901304}

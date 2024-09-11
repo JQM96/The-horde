@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRate;
     [SerializeField] private Knockback knockback;
     [SerializeField] private float stunTime;
+    [SerializeField] private float enemeyRadiusDetection = 3f;
+    [SerializeField] private float separationRadius = 0.75f;
 
     private GameObject target;
     private bool canAttack;
@@ -19,9 +21,15 @@ public class Enemy : MonoBehaviour
     private bool isStunned;
     private float stunnedTimer;
 
+    private Vector2 dir;
+    Enemy[] enemies;
+
     void Start()
     {
+        enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.InstanceID);
+
         target = FindObjectOfType<Movement>().gameObject;
+
         knockback.OnKnockBack += Knockback_OnKnockBack;
     }
 
@@ -34,9 +42,12 @@ public class Enemy : MonoBehaviour
     {
         if (target != null)
         {
-            Vector2 dir = target.transform.position - transform.position;
+            dir = target.transform.position - transform.position;
+            dir.Normalize();
+
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
+            dir -= SteerSeparation();
 
             if (canAttack == false)
             {
@@ -51,8 +62,6 @@ public class Enemy : MonoBehaviour
 
             if (isStunned == false)
             {
-                dir.Normalize();
-
                 rb.velocity = dir * speed;
                 transform.eulerAngles = new Vector3(0, 0, angle);
             }
@@ -88,5 +97,23 @@ public class Enemy : MonoBehaviour
     {
         isStunned = true;
         stunnedTimer = 0;
+    }
+
+    public Vector2 SteerSeparation()
+    {
+        Vector2 direction = Vector2.zero;
+        foreach (var e in enemies)
+        {
+            if (e != null)
+            {
+                if ((transform.position - e.transform.position).magnitude <= enemeyRadiusDetection)
+                {
+                    float ratio = Mathf.Clamp01((transform.position - e.transform.position).magnitude / separationRadius);
+                    direction -= (Vector2)(ratio * (transform.position - e.transform.position));
+                }
+            }
+        }
+
+        return direction.normalized;
     }
 }
