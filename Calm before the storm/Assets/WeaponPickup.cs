@@ -12,7 +12,7 @@ public class WeaponPickup : MonoBehaviour
 
         if (shootingComponent != null)
         {
-            shootingComponent.ChangeCurrentWeapon(weapon);
+            shootingComponent.AddWeapon(weapon);
             Destroy(gameObject);
         }
     }
