@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d0da1b80cc2404fb0fd9bdb1a600f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 999
+  health: 5
 --- !u!61 &989831822
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2086821908}
-  speed: 7
+  speed: 4
 --- !u!4 &2086821910
 Transform:
   m_ObjectHideFlags: 0
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d0da1b80cc2404fb0fd9bdb1a600f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 9999
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

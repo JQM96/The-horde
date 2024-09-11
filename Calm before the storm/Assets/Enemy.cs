@@ -72,7 +72,8 @@ public class Enemy : MonoBehaviour
         if (canAttack == true)
         {
             Health healthComponent = collision.gameObject.GetComponent<Health>();
-            if (healthComponent != null)
+            Movement movementComponent = collision.gameObject.GetComponent<Movement>();
+            if (movementComponent != null && healthComponent != null)
             {
                 healthComponent.TakeDamage(damage);
 
