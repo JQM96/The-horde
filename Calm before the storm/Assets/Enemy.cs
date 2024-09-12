@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float stunTime;
     [SerializeField] private float enemeyRadiusDetection = 3f;
     [SerializeField] private float separationRadius = 0.75f;
+    [SerializeField] private int scoreValue;
 
     private GameObject target;
     private bool canAttack;
@@ -115,5 +116,11 @@ public class Enemy : MonoBehaviour
         }
 
         return direction.normalized;
+    }
+
+    private void OnDestroy()
+    {
+        ScoreManager.instance.AddScore(scoreValue);
+        ScoreManager.instance.AddMultiplier(1);
     }
 }
