@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: 
   bulletSpeed: 21
-  bulletDamge: 1
+  bulletDamge: 2
   bulletPierce: 0
   fireRate: 25
   reloadTime: 5
   magSize: 50
+  ammo: 0
+  infiniteAmmo: 0
+  currentMag: 0

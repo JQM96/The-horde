@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float enemeyRadiusDetection = 3f;
     [SerializeField] private float separationRadius = 0.75f;
     [SerializeField] private int scoreValue;
+    [SerializeField] private Spawner lootSpawner;
+    [SerializeField] private Health health;
 
     private GameObject target;
     private bool canAttack;
@@ -32,6 +34,12 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<Movement>().gameObject;
 
         knockback.OnKnockBack += Knockback_OnKnockBack;
+        health.OnHealthReachZero += Health_OnHealthReachZero;
+    }
+
+    private void Health_OnHealthReachZero(object sender, EventArgs e)
+    {
+        spawnLoot();
     }
 
     private void Knockback_OnKnockBack(object sender, EventArgs e)
@@ -98,6 +106,12 @@ public class Enemy : MonoBehaviour
     {
         isStunned = true;
         stunnedTimer = 0;
+    }
+
+    public void spawnLoot()
+    {
+        lootSpawner.gameObject.SetActive(true);
+        lootSpawner.Spawn();
     }
 
     public Vector2 SteerSeparation()

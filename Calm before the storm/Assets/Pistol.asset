@@ -20,4 +20,4 @@ MonoBehaviour:
   magSize: 10
   ammo: 0
   infiniteAmmo: 1
-  currentMag: 3
+  currentMag: 0
