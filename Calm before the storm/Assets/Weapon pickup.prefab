@@ -101,6 +101,8 @@ MonoBehaviour:
   weapon: {fileID: 0}
   allWeapons:
   - {fileID: 11400000, guid: 7d33d05ac9c58064d801fd00046e5e27, type: 2}
+  - {fileID: 11400000, guid: 3cff9c6f35ec86b40901846280d33588, type: 2}
+  - {fileID: 11400000, guid: 3ffd6ba4a0a6f754fb3d5520726ebbdb, type: 2}
 --- !u!61 &7648650712773027557
 BoxCollider2D:
   m_ObjectHideFlags: 0

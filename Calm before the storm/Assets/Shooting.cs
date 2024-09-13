@@ -99,8 +99,29 @@ public class Shooting : MonoBehaviour
             {
                 if (currentWeapon != null)
                 {
-                    GameObject obj = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                    obj.GetComponent<Bullet>().SetBulletProperties(currentWeapon.bulletSpeed, currentWeapon.bulletDamge, currentWeapon.bulletPierce);
+                    Vector2 dir = bulletSpawnPoint.rotation * Vector2.up;
+
+                    if (currentWeapon.bulletsPerShot <= 1)
+                    {
+                        GameObject obj = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                        obj.GetComponent<Bullet>().SetBulletProperties(currentWeapon.bulletSpeed, currentWeapon.bulletDamge, currentWeapon.bulletPierce);
+
+                        obj.GetComponent<Bullet>().SetVelocity(dir * currentWeapon.bulletSpeed);
+                    }
+                    else
+                    {
+                        float bulletSpread = 0.4f;
+
+                        for (int i = 0; i < currentWeapon.bulletsPerShot; i++)
+                        {
+                            GameObject obj = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                            obj.GetComponent<Bullet>().SetBulletProperties(currentWeapon.bulletSpeed, currentWeapon.bulletDamge, currentWeapon.bulletPierce);
+
+                            Vector2 pdir = Vector2.Perpendicular(dir) * Random.Range(-bulletSpread, bulletSpread);
+
+                            obj.GetComponent<Bullet>().SetVelocity((dir + pdir) * currentWeapon.bulletSpeed);
+                        }
+                    }
 
                     canFire = false;
                     nextShotTime = 1 / currentWeapon.fireRate;

@@ -16,5 +16,5 @@ public class Weapon : ScriptableObject
     public bool infiniteAmmo;
     public float currentMag;
 
-    //Bullet pattern?
+    public int bulletsPerShot;
 }

@@ -13,9 +13,9 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Vector3 dir = transform.up;
+        /*Vector3 dir = transform.up;
 
-        rb.velocity = dir * speed;
+        rb.velocity = dir * speed;*/
 
         if (pierce)
         {
@@ -52,5 +52,10 @@ public class Bullet : MonoBehaviour
         speed = newSpeed;
         damage = newDamage;
         pierce = isPierce;
+    }
+
+    public void SetVelocity(Vector2 value)
+    {
+        rb.velocity = value;
     }
 }
