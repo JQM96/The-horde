@@ -27,6 +27,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<Bullet>() || collision.GetComponent<AmmoPickup>() || collision.GetComponent<WeaponPickup>())
+        {
+            return;
+        }
+
         Health healthComponent = collision.gameObject.GetComponent<Health>();
         if (healthComponent != null)
         {

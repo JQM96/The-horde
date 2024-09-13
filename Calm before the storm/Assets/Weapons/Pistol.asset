@@ -21,3 +21,6 @@ MonoBehaviour:
   ammo: 0
   infiniteAmmo: 1
   currentMag: 0
+  bulletsPerShot: 0
+  playerSprite: {fileID: 21300000, guid: 44c786dc418789c43a9090bf32825adc, type: 3}
+  pickUpSprite: {fileID: 21300000, guid: 2d239267ca5f3c04d911e4a9300b7497, type: 3}

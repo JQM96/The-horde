@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Weapon startingWeapon;
+    [SerializeField] private SpriteChanger sc;
 
     private Weapon currentWeapon;
     private int currentWeaponIndex = 0;
@@ -138,6 +139,8 @@ public class Shooting : MonoBehaviour
 
         canFire = true;
         reloading = false;
+
+        sc.ChangeSprite(newWeapon.playerSprite);
     }
 
     public void AddWeapon(Weapon newWeapon)

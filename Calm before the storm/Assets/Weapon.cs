@@ -17,4 +17,7 @@ public class Weapon : ScriptableObject
     public float currentMag;
 
     public int bulletsPerShot;
+
+    public Sprite playerSprite;
+    public Sprite pickUpSprite;
 }
