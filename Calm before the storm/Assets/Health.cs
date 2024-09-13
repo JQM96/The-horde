@@ -12,6 +12,15 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health < 0)
+            health = 0;
+    }
+
+    public void Heal(float healAmmount)
+    {
+        health += healAmmount;
+        if (health > 100)
+            health = 100;
     }
 
     private void Update()
