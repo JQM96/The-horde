@@ -121,8 +121,25 @@ public class Shooting : MonoBehaviour
 
     public void AddWeapon(Weapon newWeapon)
     {
-        newWeapon.currentMag = newWeapon.magSize;
-        weapons.Add(newWeapon);
+        bool foundMatch = false;
+
+        foreach (Weapon w in weapons)
+        {
+            if (w.name == newWeapon.name)
+            {
+                AddAmmoToWeapon(w.magSize / 4, w);
+                Debug.Log("Added " + w.magSize / 4 + " bullets to " + w.name);
+                foundMatch = true;
+            }
+        }
+
+        if (foundMatch == false)
+        {
+            newWeapon.currentMag = newWeapon.magSize;
+            newWeapon.ammo = 0;
+
+            weapons.Add(newWeapon);
+        }
     }
 
     public void AddMagsizeToAmmoCurrentWeapon()
@@ -136,5 +153,10 @@ public class Shooting : MonoBehaviour
         }
         else
             currentWeapon.ammo += currentWeapon.magSize;
+    }
+
+    public void AddAmmoToWeapon(int ammoToAdd, Weapon weapon)
+    {
+        weapon.ammo += ammoToAdd;
     }
 }

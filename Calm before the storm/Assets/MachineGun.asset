@@ -16,7 +16,7 @@ MonoBehaviour:
   bulletDamge: 2
   bulletPierce: 0
   fireRate: 25
-  reloadTime: 5
+  reloadTime: 3.5
   magSize: 50
   ammo: 0
   infiniteAmmo: 0
