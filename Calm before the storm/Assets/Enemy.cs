@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
 
         knockback.OnKnockBack += Knockback_OnKnockBack;
         health.OnHealthReachZero += Health_OnHealthReachZero;
+
+        WaveManager.instance.EnemySpawned();
     }
 
     private void Health_OnHealthReachZero(object sender, EventArgs e)
@@ -136,5 +138,7 @@ public class Enemy : MonoBehaviour
     {
         ScoreManager.instance.AddScore(scoreValue);
         ScoreManager.instance.AddMultiplier(1);
+
+        WaveManager.instance.EnemyKilled();
     }
 }

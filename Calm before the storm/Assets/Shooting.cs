@@ -151,7 +151,7 @@ public class Shooting : MonoBehaviour
         {
             if (w.name == newWeapon.name)
             {
-                AddAmmoToWeapon(w.magSize / 4, w);
+                AddAmmoToWeapon((w.magSize / 4) + 1, w);
                 Debug.Log("Added " + w.magSize / 4 + " bullets to " + w.name);
                 foundMatch = true;
             }
