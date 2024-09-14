@@ -20,4 +20,6 @@ public class Weapon : ScriptableObject
 
     public Sprite playerSprite;
     public Sprite pickUpSprite;
+
+    public AudioClip fireSound;
 }

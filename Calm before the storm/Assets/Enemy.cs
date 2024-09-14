@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int scoreValue;
     [SerializeField] private Spawner lootSpawner;
     [SerializeField] private Health health;
+    [SerializeField] private List<AudioClip> deathAudios;
 
     private GameObject target;
     private bool canAttack;
@@ -41,7 +43,9 @@ public class Enemy : MonoBehaviour
 
     private void Health_OnHealthReachZero(object sender, EventArgs e)
     {
-        spawnLoot();
+        int randomSoundIndex = Random.Range(0, deathAudios.Count);
+        AudioManager.PlaySound(deathAudios[randomSoundIndex]);
+        SpawnLoot();
     }
 
     private void Knockback_OnKnockBack(object sender, EventArgs e)
@@ -110,7 +114,7 @@ public class Enemy : MonoBehaviour
         stunnedTimer = 0;
     }
 
-    public void spawnLoot()
+    public void SpawnLoot()
     {
         lootSpawner.gameObject.SetActive(true);
         lootSpawner.Spawn();

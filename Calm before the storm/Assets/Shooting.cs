@@ -129,6 +129,9 @@ public class Shooting : MonoBehaviour
                     nextShotTime = 1 / currentWeapon.fireRate;
                     fireTimer = 0;
                     currentWeapon.currentMag -= 1;
+
+                    if (currentWeapon.fireSound != null)
+                        AudioManager.PlaySound(currentWeapon.fireSound);
                 }
             }
         }

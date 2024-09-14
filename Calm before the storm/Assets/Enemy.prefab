@@ -74,6 +74,12 @@ MonoBehaviour:
   scoreValue: 100
   lootSpawner: {fileID: 5168976898232226786}
   health: {fileID: 3382491407403332721}
+  deathAudios:
+  - {fileID: 8300000, guid: 703fe9295a476ae458256a6598de2a12, type: 3}
+  - {fileID: 8300000, guid: 5dd272098246b9f489a793ff73706cdf, type: 3}
+  - {fileID: 8300000, guid: 7e4487ae0bf25504aa528605e7cbb943, type: 3}
+  - {fileID: 8300000, guid: b26003b10a7fa3f42a9462a649872566, type: 3}
+  - {fileID: 8300000, guid: eb8aa7ae08c5e1a468c366c86281cbe9, type: 3}
 --- !u!114 &3382491407403332721
 MonoBehaviour:
   m_ObjectHideFlags: 0
