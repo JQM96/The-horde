@@ -183,4 +183,9 @@ public class Shooting : MonoBehaviour
     {
         weapon.ammo += ammoToAdd;
     }
+
+    public Weapon GetCurrentWeapon()
+    {
+        return currentWeapon;
+    }
 }
