@@ -8,7 +8,7 @@ public class HealthPack : MonoBehaviour
 
     private void Start()
     {
-        randomHeal = Random.Range(50, 100);
+        randomHeal = Random.Range(50, 75);
 
         int randomZ = Random.Range(-90, 90);
 
@@ -22,6 +22,8 @@ public class HealthPack : MonoBehaviour
         if (movement != null)
         {
             collision.GetComponent<Health>().Heal(randomHeal);
+
+            MessageBox.instance.SpawnMessage("HEALED!");
             Destroy(gameObject);
         }
     }

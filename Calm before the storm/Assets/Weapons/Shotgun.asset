@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   bulletSpeed: 21
-  bulletDamge: 3
-  bulletPierce: 0
+  bulletDamge: 1
+  bulletPierce: 1
   fireRate: 0.5
   reloadTime: 2
   magSize: 50
-  ammo: 1
+  ammo: 50
   infiniteAmmo: 0
-  currentMag: 0
-  bulletsPerShot: 5
+  currentMag: 40
+  bulletsPerShot: 4
   playerSprite: {fileID: 21300000, guid: 08dac91fa798d4d48a4640b7c8ee911f, type: 3}
   pickUpSprite: {fileID: 21300000, guid: 42db5f2aa7d03ea4e95fc8b783b518e9, type: 3}

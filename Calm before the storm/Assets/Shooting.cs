@@ -142,6 +142,7 @@ public class Shooting : MonoBehaviour
         reloading = false;
 
         sc.ChangeSprite(newWeapon.playerSprite);
+        MessageBox.instance.SpawnMessage(newWeapon.name.ToUpper() + " EQUIPPED!");
     }
 
     public void AddWeapon(Weapon newWeapon)
@@ -153,7 +154,7 @@ public class Shooting : MonoBehaviour
             if (w.name == newWeapon.name)
             {
                 AddAmmoToWeapon((w.magSize / 4) + 1, w);
-                Debug.Log("Added " + w.magSize / 4 + " bullets to " + w.name);
+                MessageBox.instance.SpawnMessage("FOUND " + w.magSize / 4 + " " + w.name.ToUpper() + " AMMO!");
                 foundMatch = true;
             }
         }
@@ -164,6 +165,8 @@ public class Shooting : MonoBehaviour
             newWeapon.ammo = 0;
 
             weapons.Add(newWeapon);
+
+            MessageBox.instance.SpawnMessage("FOUND " + newWeapon.name.ToUpper() + "!");
         }
     }
 
@@ -182,9 +185,18 @@ public class Shooting : MonoBehaviour
 
     public void AddMagsizeToRandomWeapon()
     {
-        int randomIndex = Random.Range(1, weapons.Count);
+        if (weapons.Count > 1)
+        {
+            int randomIndex = Random.Range(1, weapons.Count);
 
-        weapons[randomIndex].ammo += weapons[randomIndex].magSize;
+            weapons[randomIndex].ammo += weapons[randomIndex].magSize;
+
+            MessageBox.instance.SpawnMessage("FOUND " + weapons[randomIndex].name.ToUpper() + " AMMO!");
+        }
+        else
+        {
+            MessageBox.instance.SpawnMessage("EMPTY!");
+        }
     }
 
     public void AddAmmoToWeapon(int ammoToAdd, Weapon weapon)
