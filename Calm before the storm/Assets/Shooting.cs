@@ -17,7 +17,7 @@ public class Shooting : MonoBehaviour
     private float nextShotTime;
     private float fireTimer;
     private bool reloading;
-    private float reloadTimer;
+    private float reloadTimer = 0f;
 
     private void Start()
     {
@@ -85,6 +85,7 @@ public class Shooting : MonoBehaviour
 
 
                     reloading = false;
+                    reloadTimer = 0;
                 }
             }
         }
@@ -94,7 +95,6 @@ public class Shooting : MonoBehaviour
             if (currentWeapon.currentMag <= 0)
             {
                 reloading = true;
-                reloadTimer = 0;
             }
             else
             {
@@ -187,5 +187,15 @@ public class Shooting : MonoBehaviour
     public Weapon GetCurrentWeapon()
     {
         return currentWeapon;
+    }
+
+    public float GetReloadTimer()
+    {
+        return reloadTimer;
+    }
+
+    public bool IsReloading()
+    {
+        return reloading;
     }
 }
