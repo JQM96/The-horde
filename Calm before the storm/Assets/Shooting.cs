@@ -90,15 +90,16 @@ public class Shooting : MonoBehaviour
             }
         }
 
-        if (reloading == false && canFire == true && Input.GetKey(KeyCode.Mouse0))
+        if (reloading == false && Input.GetKey(KeyCode.Mouse0))
         {
             if (currentWeapon.currentMag <= 0)
             {
-                reloading = true;
+                if (currentWeapon.infiniteAmmo || currentWeapon.ammo > 0)
+                    reloading = true;
             }
             else
             {
-                if (currentWeapon != null)
+                if (currentWeapon != null && canFire == true)
                 {
                     Vector2 dir = bulletSpawnPoint.rotation * Vector2.up;
 
