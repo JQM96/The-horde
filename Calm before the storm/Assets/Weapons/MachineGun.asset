@@ -17,10 +17,10 @@ MonoBehaviour:
   bulletPierce: 0
   fireRate: 25
   reloadTime: 2
-  magSize: 50
-  ammo: 590
+  magSize: 100
+  ammo: 0
   infiniteAmmo: 0
-  currentMag: 25
+  currentMag: 0
   bulletsPerShot: 0
   playerSprite: {fileID: 21300000, guid: 81c732361aa2cc64b8dd60f1624e5e53, type: 3}
   pickUpSprite: {fileID: 21300000, guid: 0d250e97e9cebcc4d934e0a9ad529e8f, type: 3}

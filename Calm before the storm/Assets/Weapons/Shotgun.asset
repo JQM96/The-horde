@@ -17,8 +17,8 @@ MonoBehaviour:
   bulletPierce: 0
   fireRate: 0.5
   reloadTime: 2
-  magSize: 2
-  ammo: 0
+  magSize: 50
+  ammo: 1
   infiniteAmmo: 0
   currentMag: 0
   bulletsPerShot: 5
