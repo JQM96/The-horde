@@ -17,7 +17,7 @@ public class AmmoPickup : MonoBehaviour
 
         if (shootingComponent != null)
         {
-            shootingComponent.AddMagsizeToAmmoCurrentWeapon();
+            shootingComponent.AddMagsizeToRandomWeapon();
             Destroy(gameObject);
         }
     }

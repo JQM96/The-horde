@@ -180,6 +180,13 @@ public class Shooting : MonoBehaviour
             currentWeapon.ammo += currentWeapon.magSize;
     }
 
+    public void AddMagsizeToRandomWeapon()
+    {
+        int randomIndex = Random.Range(1, weapons.Count);
+
+        weapons[randomIndex].ammo += weapons[randomIndex].magSize;
+    }
+
     public void AddAmmoToWeapon(int ammoToAdd, Weapon weapon)
     {
         weapon.ammo += ammoToAdd;
