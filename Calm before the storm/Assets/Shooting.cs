@@ -131,7 +131,7 @@ public class Shooting : MonoBehaviour
                     currentWeapon.currentMag -= 1;
 
                     if (currentWeapon.fireSound != null)
-                        AudioManager.PlaySound(currentWeapon.fireSound);
+                        AudioManager.PlaySound(currentWeapon.fireSound, true);
                 }
             }
         }

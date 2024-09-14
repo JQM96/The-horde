@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
+    [SerializeField] private AudioClip pickupSound;
+
     private void Start()
     {
         int randomZ = Random.Range(-90, 90);
@@ -18,6 +20,7 @@ public class AmmoPickup : MonoBehaviour
         if (shootingComponent != null)
         {
             shootingComponent.AddMagsizeToRandomWeapon();
+            AudioManager.PlaySound(pickupSound);
             Destroy(gameObject);
         }
     }
