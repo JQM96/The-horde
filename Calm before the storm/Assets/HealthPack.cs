@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
+    [SerializeField] private AudioClip pickUpSound;
+
     private int randomHeal;
 
     private void Start()
@@ -24,6 +26,8 @@ public class HealthPack : MonoBehaviour
             collision.GetComponent<Health>().Heal(randomHeal);
 
             MessageBox.instance.SpawnMessage("HEALED!");
+
+            AudioManager.PlaySound(pickUpSound);
             Destroy(gameObject);
         }
     }
