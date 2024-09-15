@@ -91769,7 +91769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 779104112971489310, guid: eddb9412c8989664c8292ebcf935ae10, type: 3}
   bulletSpawnPoint: {fileID: 650517446}
-  startingWeapon: {fileID: 11400000, guid: 3cff9c6f35ec86b40901846280d33588, type: 2}
+  startingWeapon: {fileID: 11400000, guid: c54c5c9824d56124aa41e48482561afb, type: 2}
   sc: {fileID: 2086821915}
 --- !u!114 &2086821914
 MonoBehaviour:
