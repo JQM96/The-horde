@@ -7,6 +7,8 @@ public class WeaponPickup : MonoBehaviour
     [SerializeField] private Weapon weapon;
     [SerializeField] private List<Weapon> allWeapons;
 
+    [SerializeField] private AudioClip pickupSound;
+
     private void Start()
     {
         if (weapon == null)
@@ -30,6 +32,8 @@ public class WeaponPickup : MonoBehaviour
         if (shootingComponent != null)
         {
             shootingComponent.AddWeapon(weapon);
+
+            AudioManager.PlaySound(pickupSound, true);
             Destroy(gameObject);
         }
     }
