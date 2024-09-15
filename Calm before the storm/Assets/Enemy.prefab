@@ -296,9 +296,6 @@ MonoBehaviour:
   objectToSpawn: {fileID: 0}
   objectsToSpawn:
   - {fileID: 1593397979042612060, guid: 51f6a58cb22eb984fb267aed86110dca, type: 3}
-  - {fileID: 1593397979042612060, guid: 51f6a58cb22eb984fb267aed86110dca, type: 3}
-  - {fileID: 1593397979042612060, guid: 51f6a58cb22eb984fb267aed86110dca, type: 3}
-  - {fileID: 1006456542929616454, guid: 5c509a726e0f52a44974b5e4fee4d437, type: 3}
   - {fileID: 1006456542929616454, guid: 5c509a726e0f52a44974b5e4fee4d437, type: 3}
   - {fileID: 1006456542929616454, guid: 5c509a726e0f52a44974b5e4fee4d437, type: 3}
   - {fileID: 1006456542929616454, guid: 5c509a726e0f52a44974b5e4fee4d437, type: 3}
