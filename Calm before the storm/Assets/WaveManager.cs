@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -17,18 +18,22 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private List<Spawner> spawners;
     [SerializeField] private float timeBetweenWaves;
     [SerializeField] private int initialEnemyCount;
+    [SerializeField] private TextMeshProUGUI waveText;
+    [SerializeField] private AudioClip nextWaveClip;
 
-    private int wave = 1;
+    private int wave = 0;
     private int currentEnemiesPerWave;
     private float tbwTimer = 0f;
     private bool isWaveActive = false;
 
-    private float currentEnemyCount;
-    private float enemiesKilled;
+    private int currentEnemyCount;
+    private int enemiesKilled;
 
     private void Start()
     {
         currentEnemiesPerWave = initialEnemyCount;
+
+        waveText.text = "Wave: " + wave.ToString("0000");
     }
 
     private void Update()
@@ -44,7 +49,18 @@ public class WaveManager : MonoBehaviour
                 }
 
                 tbwTimer = 0;
+
                 isWaveActive = true;
+                enemiesKilled = 0;
+                currentEnemyCount = 0;
+
+                if (wave != 0)
+                    currentEnemiesPerWave += (initialEnemyCount / 2);
+
+                wave++;
+                waveText.text = "Wave: " + wave.ToString("0000");
+
+                AudioManager.PlaySound(nextWaveClip);
             }
         }
         else
@@ -55,17 +71,12 @@ public class WaveManager : MonoBehaviour
                 {
                     s.gameObject.SetActive(false);
                 }
+
+                currentEnemiesPerWave = currentEnemyCount;
             }
 
             if (enemiesKilled >= currentEnemiesPerWave)
-            {
                 isWaveActive = false;
-
-                enemiesKilled = 0;
-                currentEnemyCount = 0;
-
-                currentEnemiesPerWave += (initialEnemyCount / 2);
-            }
         }
     }
 
@@ -76,7 +87,6 @@ public class WaveManager : MonoBehaviour
 
     public void EnemyKilled()
     {
-        currentEnemyCount--;
         enemiesKilled++;
     }
 }
