@@ -8,12 +8,15 @@ public class Health : MonoBehaviour
     [SerializeField] private float health;
 
     public event EventHandler OnHealthReachZero;
+    public event EventHandler OnDamage;
 
     public void TakeDamage(float damage)
     {
         health -= damage;
         if (health < 0)
             health = 0;
+
+        OnDamage?.Invoke(this, EventArgs.Empty);
     }
 
     public void Heal(float healAmmount)

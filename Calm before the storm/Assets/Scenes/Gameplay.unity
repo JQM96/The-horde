@@ -93806,6 +93806,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2086821908}
   speed: 4
+  playerHealthComponent: {fileID: 2086821914}
+  hurtSounds:
+  - {fileID: 8300000, guid: 7eac4481c4787d84dacef8657305f5a0, type: 3}
+  - {fileID: 8300000, guid: 16bc856f5931c6e47b2859d0bd7c2a34, type: 3}
+  - {fileID: 8300000, guid: f8564495891b67e45ab9e2b01bf080c3, type: 3}
+  - {fileID: 8300000, guid: daae13f9de45aa34f9468e0ad815a906, type: 3}
+  deathSound: {fileID: 8300000, guid: 07d46e809b8c60e4c99578652ab7f1ed, type: 3}
 --- !u!4 &2086821910
 Transform:
   m_ObjectHideFlags: 0
