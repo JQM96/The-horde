@@ -38,14 +38,17 @@ public class Enemy : MonoBehaviour
         knockback.OnKnockBack += Knockback_OnKnockBack;
         health.OnHealthReachZero += Health_OnHealthReachZero;
 
-        WaveManager.instance.EnemySpawned();
+        if (WaveManager.instance != null)
+            WaveManager.instance.EnemySpawned();
     }
 
     private void Health_OnHealthReachZero(object sender, EventArgs e)
     {
         int randomSoundIndex = Random.Range(0, deathAudios.Count);
         AudioManager.PlaySound(deathAudios[randomSoundIndex]);
-        SpawnLoot();
+
+        if (lootSpawner != null)
+            SpawnLoot();
     }
 
     private void Knockback_OnKnockBack(object sender, EventArgs e)
@@ -140,9 +143,13 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        ScoreManager.instance.AddScore(scoreValue);
-        ScoreManager.instance.AddMultiplier(1);
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+            ScoreManager.instance.AddMultiplier(1);
+        }
 
-        WaveManager.instance.EnemyKilled();
+        if (WaveManager.instance != null)
+            WaveManager.instance.EnemyKilled();
     }
 }
