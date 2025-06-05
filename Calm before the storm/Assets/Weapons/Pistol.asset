@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e79bd2cf25d1240a19a5284530cd9c, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
+  weaponName: Pistol
   bulletSpeed: 14
   bulletDamge: 1
   bulletPierce: 0
@@ -19,7 +20,7 @@ MonoBehaviour:
   reloadTime: 1
   magSize: 10
   ammo: 0
-  infiniteAmmo: 1
+  infiniteAmmo: 0
   currentMag: 10
   bulletsPerShot: 0
   playerSprite: {fileID: 21300000, guid: 44c786dc418789c43a9090bf32825adc, type: 3}
