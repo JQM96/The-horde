@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e79bd2cf25d1240a19a5284530cd9c, type: 3}
   m_Name: Sniper rifle
   m_EditorClassIdentifier: 
+  weaponName: Sniper rifle
   bulletSpeed: 50
   bulletDamge: 5
   bulletPierce: 1

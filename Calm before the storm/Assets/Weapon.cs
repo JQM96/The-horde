@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon")]
 public class Weapon : ScriptableObject
 {
+    public string weaponName;
+
     public float bulletSpeed;
     public float bulletDamge;
     public bool bulletPierce;
