@@ -51,6 +51,12 @@ public class Shooting : MonoBehaviour
 
             ChangeCurrentWeapon(weapons[currentWeaponIndex]);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (currentWeapon.ammo > 0)
+                reloading = true;
+        }
+
 
         if (canFire == false)
         {
@@ -145,7 +151,7 @@ public class Shooting : MonoBehaviour
         reloading = false;
 
         sc.ChangeSprite(newWeapon.playerSprite);
-        MessageBox.instance.SpawnMessage(newWeapon.name.ToUpper() + " EQUIPPED!");
+        MessageBox.instance.SpawnMessage(newWeapon.weaponName.ToUpper() + " EQUIPPED!");
     }
 
     public void AddWeapon(Weapon newWeapon)
@@ -157,7 +163,7 @@ public class Shooting : MonoBehaviour
             if (w.name == newWeapon.name)
             {
                 AddAmmoToWeapon((w.magSize / 4) + 1, w);
-                MessageBox.instance.SpawnMessage("FOUND " + w.magSize / 4 + " " + w.name.ToUpper() + " AMMO!");
+                MessageBox.instance.SpawnMessage("FOUND " + w.magSize / 4 + " " + w.weaponName.ToUpper() + " AMMO!");
                 foundMatch = true;
             }
         }
@@ -169,7 +175,7 @@ public class Shooting : MonoBehaviour
 
             weapons.Add(newWeapon);
 
-            MessageBox.instance.SpawnMessage("FOUND " + newWeapon.name.ToUpper() + "!");
+            MessageBox.instance.SpawnMessage("FOUND " + newWeapon.weaponName.ToUpper() + "!");
         }
     }
 
@@ -188,18 +194,19 @@ public class Shooting : MonoBehaviour
 
     public void AddMagsizeToRandomWeapon()
     {
-        if (weapons.Count > 1)
-        {
-            int randomIndex = Random.Range(1, weapons.Count);
+        int randomIndex = Random.Range(0, weapons.Count - 1);
 
-            weapons[randomIndex].ammo += weapons[randomIndex].magSize;
-
-            MessageBox.instance.SpawnMessage("FOUND " + weapons[randomIndex].name.ToUpper() + " AMMO!");
-        }
-        else
+        if (weapons[randomIndex].infiniteAmmo == true)
         {
             MessageBox.instance.SpawnMessage("EMPTY!");
         }
+        else
+        {
+            weapons[randomIndex].ammo += weapons[randomIndex].magSize;
+
+            MessageBox.instance.SpawnMessage("FOUND " + weapons[randomIndex].weaponName.ToUpper() + " AMMO!");
+        }
+
     }
 
     public void AddAmmoToWeapon(int ammoToAdd, Weapon weapon)
