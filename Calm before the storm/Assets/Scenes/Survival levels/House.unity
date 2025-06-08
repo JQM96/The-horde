@@ -3167,7 +3167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 650517446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5327,7 +5327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823509296}
   - component: {fileID: 1823509297}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5964,7 +5964,7 @@ GameObject:
   - component: {fileID: 2086821915}
   - component: {fileID: 2086821908}
   - component: {fileID: 2086821916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6047,7 +6047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ca1494700244147ac654f866247ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody: {fileID: 2086821910}
+  playerBody: {fileID: 1823509296}
 --- !u!114 &2086821912
 MonoBehaviour:
   m_ObjectHideFlags: 0
