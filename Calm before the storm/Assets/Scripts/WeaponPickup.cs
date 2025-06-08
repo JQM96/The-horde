@@ -5,19 +5,10 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] private Weapon weapon;
-    [SerializeField] private List<Weapon> allWeapons;
-
     [SerializeField] private AudioClip pickupSound;
 
     private void Start()
     {
-        if (weapon == null)
-        {
-            int randomIndex = Random.Range(0, allWeapons.Count);
-            weapon = allWeapons[randomIndex];
-
-        }
-
         GetComponent<SpriteRenderer>().sprite = weapon.pickUpSprite;
 
         int randomZ = Random.Range(-90, 90);
@@ -27,11 +18,11 @@ public class WeaponPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Shooting shootingComponent = collision.GetComponent<Shooting>();
+        WeaponManager weaponManager = collision.GetComponent<WeaponManager>();
 
-        if (shootingComponent != null)
+        if (weaponManager != null)
         {
-            shootingComponent.AddWeapon(weapon);
+            weaponManager.AddWeapon(weapon);
 
             AudioManager.PlaySound(pickupSound, true);
             Destroy(gameObject);

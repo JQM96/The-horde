@@ -19,14 +19,14 @@ public class WeaponUI : MonoBehaviour
 
     private void Update()
     {
-        currentAmmo = shootingComponent.GetCurrentWeapon().ammo;
-        currentMag = shootingComponent.GetCurrentWeapon().currentMag;
-        reloadTime = shootingComponent.GetCurrentWeapon().reloadTime;
-        reloadProgress = shootingComponent.GetReloadTimer();
+        //currentAmmo = shootingComponent.GetCurrentWeapon().ammo;
+        //currentMag = shootingComponent.GetCurrentWeapon().currentMag;
+        //reloadTime = shootingComponent.GetCurrentWeapon().reloadTime;
+        //reloadProgress = shootingComponent.GetReloadTimer();
 
-        if (shootingComponent.GetCurrentWeapon().infiniteAmmo == true)
-            ammoText.text = "\u221E";
-        else if (ammoText.text == "\u221E")
+        //if (shootingComponent.GetCurrentWeapon().infiniteAmmo == true)
+            //ammoText.text = "\u221E";
+        /*else*/ if (ammoText.text == "\u221E")
             ammoText.text = 0.ToString();
         else if (int.Parse(ammoText.text) != currentAmmo)
             ammoText.text = currentAmmo.ToString();
@@ -34,7 +34,7 @@ public class WeaponUI : MonoBehaviour
         if (int.Parse(magazineText.text) != currentMag)
             magazineText.text = currentMag.ToString();
 
-        if (shootingComponent.IsReloading())
+        //if (shootingComponent.IsReloading())
         {
             reloadBar.gameObject.SetActive(true);
 
@@ -45,7 +45,7 @@ public class WeaponUI : MonoBehaviour
                 reloadBar.value = reloadProgress;
 
         }
-        else
+        //else
             reloadBar.gameObject.SetActive(false);
     }
 }

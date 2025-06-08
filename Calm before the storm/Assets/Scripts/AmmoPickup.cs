@@ -19,7 +19,7 @@ public class AmmoPickup : MonoBehaviour
 
         if (shootingComponent != null)
         {
-            shootingComponent.AddMagsizeToRandomWeapon();
+            //shootingComponent.AddMagsizeToRandomWeapon();
             AudioManager.PlaySound(pickupSound);
             Destroy(gameObject);
         }
