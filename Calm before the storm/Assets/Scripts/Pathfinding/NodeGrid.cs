@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeGrid : MonoBehaviour
 {
-    [SerializeField] private Vector2 worldSize;
+    [SerializeField] public Vector2 worldSize { get; private set; }
     [SerializeField] private float cellSize;
 
     private List<Node> _nodes;
@@ -44,5 +44,18 @@ public class NodeGrid : MonoBehaviour
     private Vector3 GetWorldPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize;
+    }
+
+    public Node GetNode(int x, int y)
+    {
+        foreach (Node n in _nodes)
+        {
+            if (n.x == x && n.y == y)
+            {
+                return n;
+            }
+        }
+
+        return null;
     }
 }
