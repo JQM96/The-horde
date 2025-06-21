@@ -25,6 +25,7 @@ public class Node
     public void Initialize()
     {
         gCost = int.MaxValue;
+        CalculateFCost();
         previousNode = null;
     }
 

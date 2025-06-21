@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NodeGrid : MonoBehaviour
 {
-    [SerializeField] public Vector2 worldSize { get; private set; }
+    [SerializeField] Vector2 worldSize;
     [SerializeField] private float cellSize;
 
     private List<Node> _nodes;
@@ -15,7 +16,7 @@ public class NodeGrid : MonoBehaviour
 
         for (int i = 0; i < worldSize.x; i++)
         {
-            for (int j = 0; j < worldSize.x; j++)
+            for (int j = 0; j < worldSize.y; j++)
             {
                 Node n = new Node(i, j);
 
@@ -41,9 +42,14 @@ public class NodeGrid : MonoBehaviour
         }
     }
 
-    private Vector3 GetWorldPosition(int x, int y)
+    public Vector3 GetWorldPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize;
+    }
+    public void GetXY(Vector3 startWorldPos, out int x, out int y)
+    {
+        y = Mathf.FloorToInt(startWorldPos.y / cellSize);
+        x = Mathf.FloorToInt(startWorldPos.x / cellSize);
     }
 
     public Node GetNode(int x, int y)
@@ -56,6 +62,17 @@ public class NodeGrid : MonoBehaviour
             }
         }
 
+        Debug.Log("[" + x + "," + y + "] not found...");
         return null;
+    }
+
+    public float GetCellSize()
+    {
+        return cellSize;
+    }
+
+    public Vector2 GetWorldSize()
+    {
+        return worldSize;
     }
 }
