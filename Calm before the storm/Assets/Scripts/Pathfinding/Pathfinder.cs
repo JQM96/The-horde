@@ -110,38 +110,51 @@ public class Pathfinder
     {
         List<Node> neighbours = new List<Node>();
 
+        Node leftNode = nodeGrid.GetNode(n.x - 1, n.y);
+        Node leftUpNode = nodeGrid.GetNode(n.x - 1, n.y + 1);
+        Node leftDownNode = nodeGrid.GetNode(n.x - 1, n.y - 1);
+
+        Node rightNode = nodeGrid.GetNode(n.x + 1, n.y);
+        Node rightUpNode = nodeGrid.GetNode(n.x + 1, n.y + 1);
+        Node rightDownNode = nodeGrid.GetNode(n.x + 1, n.y - 1);
+
+        Node upNode = nodeGrid.GetNode(n.x, n.y + 1);
+        Node downNode = nodeGrid.GetNode(n.x, n.y - 1);
+
         if (n.x - 1 >= 0)
         {
             //Left position is valid. Add it and check diagonals.
-            neighbours.Add(nodeGrid.GetNode(n.x - 1, n.y)); //Left
+            if (leftNode.isWalkable)
+                neighbours.Add(leftNode); //Left
 
-            if (n.y + 1 < nodeGrid.GetWorldSize().y)
-                neighbours.Add(nodeGrid.GetNode(n.x - 1, n.y + 1)); //Left-Up
+            if (n.y + 1 < nodeGrid.GetWorldSize().y && leftUpNode.isWalkable)
+                neighbours.Add(leftUpNode); //Left-Up
 
-            if (n.y - 1 >= 0)
-                neighbours.Add(nodeGrid.GetNode(n.x - 1, n.y - 1)); //Left-Down
+            if (n.y - 1 >= 0 && leftDownNode.isWalkable)
+                neighbours.Add(leftDownNode); //Left-Down
         }
 
         if (n.x + 1 < nodeGrid.GetWorldSize().x)
         {
             //Right position is valid. Add it and check diagonals.
-            neighbours.Add(nodeGrid.GetNode(n.x + 1, n.y)); //Right
+            if (rightNode.isWalkable)
+                neighbours.Add(rightNode); //Right
 
-            if (n.y + 1 < nodeGrid.GetWorldSize().y)
-                neighbours.Add(nodeGrid.GetNode(n.x + 1, n.y + 1)); //Right-Up
+            if (n.y + 1 < nodeGrid.GetWorldSize().y && rightUpNode.isWalkable)
+                neighbours.Add(rightUpNode); //Right-Up
 
-            if (n.y - 1 >= 0)
-                neighbours.Add(nodeGrid.GetNode(n.x + 1, n.y - 1)); //Right-Down
+            if (n.y - 1 >= 0 && rightDownNode.isWalkable)
+                neighbours.Add(rightDownNode); //Right-Down
         }
 
-        if (n.y + 1 < nodeGrid.GetWorldSize().y) //Up
+        if (n.y + 1 < nodeGrid.GetWorldSize().y && upNode.isWalkable) //Up
         {
-            neighbours.Add(nodeGrid.GetNode(n.x, n.y + 1));
+            neighbours.Add(upNode);
         }
 
-        if (n.y - 1 >= 0) //Down
+        if (n.y - 1 >= 0 && upNode.isWalkable) //Down
         {
-            neighbours.Add(nodeGrid.GetNode(n.x, n.y - 1));
+            neighbours.Add(downNode);
         }
 
         return neighbours;

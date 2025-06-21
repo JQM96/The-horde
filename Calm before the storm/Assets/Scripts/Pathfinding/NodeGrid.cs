@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.Image;
+using Color = UnityEngine.Color;
 
 public class NodeGrid : MonoBehaviour
 {
     [SerializeField] Vector2 worldSize;
     [SerializeField] private float cellSize;
+    [SerializeField] private LayerMask obstacleLayer;
 
     private List<Node> _nodes;
 
@@ -19,26 +24,40 @@ public class NodeGrid : MonoBehaviour
             for (int j = 0; j < worldSize.y; j++)
             {
                 Node n = new Node(i, j);
-
                 _nodes.Add(n);
 
-                /*GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                sphere.transform.position = GetWorldPosition(i, j) + new Vector3(cellSize, cellSize) * 0.5f;
-                sphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);*/
+                //Check if there is an obstacle
+                RaycastHit2D hit = Physics2D.BoxCast(GetWorldPosition(i, j),
+                                                     new Vector2(cellSize / 2, cellSize / 2),
+                                                     0,
+                                                     Vector2.right,
+                                                     cellSize / 2,
+                                                     obstacleLayer);
+
+                if (hit == true)
+                {
+                    n.SetWalkable(false);
+                }
             }
         }
     }
-
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        if (Application.isPlaying == false)
+            return;
 
-        for (int i = 0; i < worldSize.x; i++)
+        foreach (Node n in _nodes)
         {
-            for (int j = 0; j < worldSize.y; j++)
+            if (n.isWalkable == true)
             {
-                Gizmos.DrawWireSphere(GetWorldPosition(i, j) + new Vector3(cellSize, cellSize) * 0.5f, 0.1f);
+                Gizmos.color = Color.green;
             }
+            else
+            {
+                Gizmos.color = Color.red;
+            }
+
+            Gizmos.DrawWireSphere(GetWorldPosition(n.x, n.y) + new Vector3(cellSize, cellSize) * 0.5f, 0.1f);
         }
     }
 

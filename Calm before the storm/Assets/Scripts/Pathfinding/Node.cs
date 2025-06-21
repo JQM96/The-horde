@@ -12,7 +12,7 @@ public class Node
     public int hCost; //Heuristic cost to reach end node
     public int fCost; //F = G + H
 
-    bool isWalkable;
+    public bool isWalkable { get; private set; }
 
     public Node previousNode;
 
@@ -20,6 +20,7 @@ public class Node
     {
         x = _x;
         y = _y;
+        isWalkable = true;
     }
 
     public void Initialize()
@@ -32,5 +33,10 @@ public class Node
     public void CalculateFCost()
     {
         fCost = gCost + hCost;
+    }
+
+    internal void SetWalkable(bool v)
+    {
+        isWalkable = v;
     }
 }
