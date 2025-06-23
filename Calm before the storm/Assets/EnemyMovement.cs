@@ -16,8 +16,6 @@ public class EnemyMovement : MonoBehaviour
 
     Transform target;
 
-    int mpIndex = 0;
-
 
     private void Awake()
     {
