@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private Transform shootingPoint;
+    [SerializeField] private ParticleSystem muzzleFlash;
 
     private WeaponManager weaponManager;
 
@@ -48,6 +49,8 @@ public class Shooting : MonoBehaviour
 
             //Decrease currentmag
             weapon.currentMag -= 1;
+
+            muzzleFlash.Play();
         }
     }
 }
