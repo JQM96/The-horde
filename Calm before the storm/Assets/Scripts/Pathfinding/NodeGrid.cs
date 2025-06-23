@@ -41,7 +41,8 @@ public class NodeGrid : MonoBehaviour
             }
         }
     }
-    private void OnDrawGizmos()
+    //For some reason, some walkable tiles are appearing red. Commenting this.
+    /*private void OnDrawGizmos()
     {
         if (Application.isPlaying == false)
             return;
@@ -51,15 +52,16 @@ public class NodeGrid : MonoBehaviour
             if (n.isWalkable == true)
             {
                 Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(GetWorldPosition(n.x, n.y) + new Vector3(cellSize, cellSize) * 0.5f, 0.1f);
             }
             else
             {
                 Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(GetWorldPosition(n.x, n.y) + new Vector3(cellSize, cellSize) * 0.5f, 0.1f);
             }
 
-            Gizmos.DrawWireSphere(GetWorldPosition(n.x, n.y) + new Vector3(cellSize, cellSize) * 0.5f, 0.1f);
         }
-    }
+    }*/
 
     public Vector3 GetWorldPosition(int x, int y)
     {
