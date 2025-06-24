@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(WeaponManager))]
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private Transform shootingPoint;
-    [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private ParticleSystem muzzleFlashParticles;
+    [SerializeField] private Light2D muzzleFlashLight;
 
     private WeaponManager weaponManager;
 
@@ -22,6 +24,9 @@ public class Shooting : MonoBehaviour
         {
             Fire(weaponManager.GetCurrentWeapon());
         }
+
+        if (muzzleFlashParticles.isPlaying == false)
+            muzzleFlashLight.gameObject.SetActive(false);
     }
 
     private void Fire(Weapon weapon)
@@ -50,7 +55,9 @@ public class Shooting : MonoBehaviour
             //Decrease currentmag
             weapon.currentMag -= 1;
 
-            muzzleFlash.Play();
+            muzzleFlashParticles.Play();
+
+            muzzleFlashLight.gameObject.SetActive(true);
         }
     }
 }
