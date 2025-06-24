@@ -58,6 +58,8 @@ public class Shooting : MonoBehaviour
             muzzleFlashParticles.Play();
 
             muzzleFlashLight.gameObject.SetActive(true);
+
+            AudioManager.PlaySound(weapon.fireSound, true);
         }
     }
 }
