@@ -790,7 +790,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87488,7 +87488,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91626,7 +91626,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92067,7 +92067,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93758,6 +93758,7 @@ GameObject:
   - component: {fileID: 2086821915}
   - component: {fileID: 2086821908}
   - component: {fileID: 2086821916}
+  - component: {fileID: 2086821917}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -93804,15 +93805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f331ecf158016934282b01de5ffad1c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2086821908}
   speed: 4
-  playerHealthComponent: {fileID: 2086821914}
-  hurtSounds:
-  - {fileID: 8300000, guid: 7eac4481c4787d84dacef8657305f5a0, type: 3}
-  - {fileID: 8300000, guid: 16bc856f5931c6e47b2859d0bd7c2a34, type: 3}
-  - {fileID: 8300000, guid: f8564495891b67e45ab9e2b01bf080c3, type: 3}
-  - {fileID: 8300000, guid: daae13f9de45aa34f9468e0ad815a906, type: 3}
-  deathSound: {fileID: 8300000, guid: 07d46e809b8c60e4c99578652ab7f1ed, type: 3}
 --- !u!4 &2086821910
 Transform:
   m_ObjectHideFlags: 0
@@ -93854,10 +93847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a5d0d3333068c488df54af27b1cbe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 779104112971489310, guid: eddb9412c8989664c8292ebcf935ae10, type: 3}
-  bulletSpawnPoint: {fileID: 650517446}
-  startingWeapon: {fileID: 11400000, guid: c54c5c9824d56124aa41e48482561afb, type: 2}
-  sc: {fileID: 2086821915}
+  shootingPoint: {fileID: 0}
+  muzzleFlash: {fileID: 0}
 --- !u!114 &2086821914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93929,6 +93920,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5295203, y: 0.4760566}
   m_EdgeRadius: 0
+--- !u!114 &2086821917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086821907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58c17f681c2a23419c4485ae13edaa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2114162795
 GameObject:
   m_ObjectHideFlags: 0

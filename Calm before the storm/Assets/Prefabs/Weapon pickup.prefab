@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,10 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  allWeapons:
-  - {fileID: 11400000, guid: 7d33d05ac9c58064d801fd00046e5e27, type: 2}
-  - {fileID: 11400000, guid: 3cff9c6f35ec86b40901846280d33588, type: 2}
-  - {fileID: 11400000, guid: 3ffd6ba4a0a6f754fb3d5520726ebbdb, type: 2}
   pickupSound: {fileID: 8300000, guid: b7852a194aa870f48b4fce84d6204c50, type: 3}
 --- !u!61 &7648650712773027557
 BoxCollider2D:
