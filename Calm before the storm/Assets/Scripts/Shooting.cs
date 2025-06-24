@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Light2D muzzleFlashLight;
 
     private WeaponManager weaponManager;
+    private float fireTimer;
 
     private void Awake()
     {
@@ -19,8 +20,10 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
+        fireTimer += Time.deltaTime;
+
         //Fire!
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             Fire(weaponManager.GetCurrentWeapon());
         }
@@ -33,6 +36,10 @@ public class Shooting : MonoBehaviour
     {
         if (weapon == null)
             return;
+
+        if (fireTimer < 1 / weapon.fireRate)
+            return;
+
 
         if (weapon.currentMag > 0)
         {
@@ -60,6 +67,8 @@ public class Shooting : MonoBehaviour
             muzzleFlashLight.gameObject.SetActive(true);
 
             AudioManager.PlaySound(weapon.fireSound, true);
+
+            fireTimer = 0;
         }
     }
 }
