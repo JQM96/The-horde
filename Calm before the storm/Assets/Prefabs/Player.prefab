@@ -5145,6 +5145,7 @@ MonoBehaviour:
   shootingPoint: {fileID: 4022413386672466972}
   muzzleFlashParticles: {fileID: 3128563105702471668}
   muzzleFlashLight: {fileID: 6264426040717077202}
+  traceBulltetPrefab: {fileID: 8274356422013060176, guid: 637647bb781130745a1a9d8ee865e0ad, type: 3}
 --- !u!114 &2513750775172328196
 MonoBehaviour:
   m_ObjectHideFlags: 0

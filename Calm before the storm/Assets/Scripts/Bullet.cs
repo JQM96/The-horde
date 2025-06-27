@@ -5,66 +5,22 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Collider2D col;
 
-    private float speed;
-    private float damage;
-    private bool pierce;
+    [SerializeField] private float speed;
 
     private void Start()
     {
-        /*Vector3 dir = transform.up;
+        Vector3 dir = transform.right;
 
-        rb.velocity = dir * speed;*/
+        rb.velocity = dir * speed;
 
-        if (pierce)
-        {
-            col.isTrigger = true;
-        }
-
-        Destroy(gameObject, 3.5f);
+        Destroy(gameObject, 1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Bullet>() || collision.GetComponent<AmmoPickup>() || collision.GetComponent<WeaponPickup>() || collision.GetComponent<HealthPack>())
-        {
-            return;
-        }
-
-        Health healthComponent = collision.gameObject.GetComponent<Health>();
-        if (healthComponent != null)
-        {
-            healthComponent.TakeDamage(damage);
-
-            if (pierce == false)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        Knockback knockBackComponent = collision.gameObject.GetComponent<Knockback>();
-        if (knockBackComponent != null)
-        {
-            Vector2 direction = (gameObject.transform.position - collision.gameObject.transform.position) * -1;
-
-            knockBackComponent.ApplyKnockBack(damage, direction);
-
-            return;
-        }
+        rb.velocity = Vector3.zero;
 
         Destroy(gameObject);
-    }
-
-    public void SetBulletProperties(float newSpeed, float newDamage, bool isPierce)
-    {
-        speed = newSpeed;
-        damage = newDamage;
-        pierce = isPierce;
-    }
-
-    public void SetVelocity(Vector2 value)
-    {
-        rb.velocity = value;
     }
 }

@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private ParticleSystem muzzleFlashParticles;
     [SerializeField] private Light2D muzzleFlashLight;
+    [SerializeField] private GameObject traceBulltetPrefab;
 
     private WeaponManager weaponManager;
     private float fireTimer;
@@ -69,6 +70,8 @@ public class Shooting : MonoBehaviour
             AudioManager.PlaySound(weapon.fireSound, true);
 
             fireTimer = 0;
+
+            Instantiate(traceBulltetPrefab, shootingPoint.position, shootingPoint.rotation);
         }
     }
 }
