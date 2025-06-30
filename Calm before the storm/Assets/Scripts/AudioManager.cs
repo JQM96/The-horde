@@ -29,19 +29,24 @@ public static class AudioManager
         {
             audioSource.PlayOneShot(clip);
         }
-        
+
 
         GameObject.Destroy(soundGameObject, clip.length);
     }
 
     public static void PlayMusic(AudioClip clip)
     {
-        GameObject soundGameObject = new GameObject("sound");
+        GameObject soundGameObject = new GameObject("AM_Music");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
 
         audioSource.loop = true;
         audioSource.clip = clip;
 
         audioSource.Play();
+    }
+
+    internal static void StopMusic()
+    {
+        GameObject.Find("AM_Music").GetComponent<AudioSource>().Stop();
     }
 }
