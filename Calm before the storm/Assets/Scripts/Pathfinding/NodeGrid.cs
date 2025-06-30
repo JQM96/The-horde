@@ -42,7 +42,7 @@ public class NodeGrid : MonoBehaviour
         }
     }
     //For some reason, some walkable tiles are appearing red. Commenting this.
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (Application.isPlaying == false)
             return;
@@ -61,7 +61,7 @@ public class NodeGrid : MonoBehaviour
             }
 
         }
-    }*/
+    }
 
     public Vector3 GetWorldPosition(int x, int y)
     {

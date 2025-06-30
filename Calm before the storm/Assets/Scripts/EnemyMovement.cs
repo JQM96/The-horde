@@ -14,12 +14,26 @@ public class EnemyMovement : MonoBehaviour
 
     Rigidbody2D rb;
 
-    Transform target;
+    Transform targetRef;
+    Pathfinder pathfinderRef;
+
+    float movementRefreshTime = 0.5f;
+    float timer;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= movementRefreshTime)
+        {
+            movePoints = pathfinderRef.FindPath(transform.position, targetRef.position);
+            timer = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -28,31 +42,39 @@ public class EnemyMovement : MonoBehaviour
             return;
 
         //Calculate direction
-        Vector3 dir = movePoints[0] - transform.position;
+        Vector3 dir = Vector3.one;
+        dir = targetRef.position - transform.position;
+
         dir.Normalize();
 
         //Calculate angle
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        
+
 
         //Move! (and rotate)
         rb.velocity = dir * moveSpeed;
         transform.eulerAngles = new Vector3(0, 0, angle);
 
-        if (Vector3.Distance(transform.position, movePoints[0]) < 1f)
-            movePoints.RemoveAt(0);
+        if (movePoints.Count > 0)
+        {
+            if (Vector3.Distance(transform.position, movePoints[0]) < 1f)
+            {
+                movePoints.RemoveAt(0);
+            }
+        }
 
         if (movePoints.Count <= 0)
         {
-            isMoving = false;
-            rb.velocity = Vector3.zero;
+            //isMoving = false;
+            //rb.velocity = Vector3.zero;
         }
     }
 
     internal void MoveTowardsTarget(Transform target, Pathfinder pathfinder)
     {
         isMoving = true;
-        this.target = target;
+        targetRef = target;
+        pathfinderRef = pathfinder;
 
         movePoints = pathfinder.FindPath(transform.position, target.position);
     }

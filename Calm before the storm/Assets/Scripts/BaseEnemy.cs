@@ -8,12 +8,13 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMovement))]
 public class BaseEnemy : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] NodeGrid nodeGrid;
 
     Health healthComponent;
     Pathfinder pathfinder;
     EnemyMovement movement;
+
+    Transform playerTransform;
 
     private void Awake()
     {
@@ -25,10 +26,17 @@ public class BaseEnemy : MonoBehaviour
         pathfinder = new Pathfinder(nodeGrid);
 
         movement = GetComponent<EnemyMovement>();
+
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void Start()
     {
-        movement.MoveTowardsTarget(target, pathfinder);
+        ChasePlayer();
+    }
+
+    public void ChasePlayer()
+    {
+        movement.MoveTowardsTarget(playerTransform, pathfinder);
     }
 }
