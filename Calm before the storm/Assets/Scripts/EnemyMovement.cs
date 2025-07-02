@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
     float movementRefreshTime = 0.5f;
     float timer;
 
+    int mpIndex = 0;
+
 
     private void Awake()
     {
@@ -43,7 +45,10 @@ public class EnemyMovement : MonoBehaviour
 
         //Calculate direction
         Vector3 dir = Vector3.one;
-        dir = targetRef.position - transform.position;
+        if (mpIndex < movePoints.Count)
+            dir = movePoints[mpIndex] - transform.position;
+        else 
+            dir = targetRef.position - transform.position;
 
         dir.Normalize();
 
@@ -55,11 +60,11 @@ public class EnemyMovement : MonoBehaviour
         rb.velocity = dir * moveSpeed;
         transform.eulerAngles = new Vector3(0, 0, angle);
 
-        if (movePoints.Count > 0)
+        if (mpIndex < movePoints.Count)
         {
-            if (Vector3.Distance(transform.position, movePoints[0]) < 1f)
+            if (Vector3.Distance(transform.position, movePoints[mpIndex]) < 1f)
             {
-                movePoints.RemoveAt(0);
+                mpIndex++;
             }
         }
 
