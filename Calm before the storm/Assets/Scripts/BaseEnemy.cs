@@ -8,10 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMovement))]
 public class BaseEnemy : MonoBehaviour
 {
-    [SerializeField] NodeGrid nodeGrid;
-
     Health healthComponent;
-    Pathfinder pathfinder;
     EnemyMovement movement;
 
     Transform playerTransform;
@@ -19,11 +16,6 @@ public class BaseEnemy : MonoBehaviour
     private void Awake()
     {
         healthComponent = GetComponent<Health>();
-
-        if (nodeGrid == null)
-            nodeGrid = (NodeGrid)FindObjectOfType(typeof(NodeGrid));
-
-        pathfinder = new Pathfinder(nodeGrid);
 
         movement = GetComponent<EnemyMovement>();
 
@@ -37,6 +29,6 @@ public class BaseEnemy : MonoBehaviour
 
     public void ChasePlayer()
     {
-        movement.MoveTowardsTarget(playerTransform, pathfinder);
+
     }
 }
