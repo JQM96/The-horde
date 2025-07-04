@@ -8,12 +8,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(EnemyMovement))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(FSM))]
 public class BaseEnemy : MonoBehaviour
 {
     Health healthComponent;
     EnemyMovement movement;
 
     Transform playerTransform;
+
+    FSM fsm;
 
     private void Awake()
     {
@@ -22,15 +25,30 @@ public class BaseEnemy : MonoBehaviour
         movement = GetComponent<EnemyMovement>();
 
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
-    }
 
-    private void Update()
-    {
-        ChasePlayer();
+        fsm = GetComponent<FSM>();
+        fsm.SetBaseEnemyRef(this);
     }
 
     public void ChasePlayer()
     {
         movement.MoveTo(playerTransform);
+    }
+
+    public bool AttackTransition()
+    {
+        return (Vector3.Distance(transform.position, playerTransform.position) <= 1.2f);
+    }
+
+    public bool ChaseTransition()
+    {
+        return (Vector3.Distance(transform.position, playerTransform.position) > 1.2f);
+    }
+
+    public void Attack()
+    {
+        movement.StopMoving();
+
+        //More
     }
 }
