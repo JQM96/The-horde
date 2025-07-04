@@ -5,30 +5,32 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float health;
+    [SerializeField] float maxHealth = 100f;
+
+    private float currentHealth;
 
     public event EventHandler OnHealthReachZero;
     public event EventHandler OnDamage;
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health < 0)
-            health = 0;
+        currentHealth -= damage;
+        if (currentHealth < 0)
+            currentHealth = 0;
 
         OnDamage?.Invoke(this, EventArgs.Empty);
     }
 
     public void Heal(float healAmmount)
     {
-        health += healAmmount;
-        if (health > 100)
-            health = 100;
+        currentHealth += healAmmount;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
     }
 
     private void Update()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             OnHealthReachZero?.Invoke(this, EventArgs.Empty);
 
@@ -38,6 +40,6 @@ public class Health : MonoBehaviour
 
     public float GetCurrentHealth()
     {
-        return health;
+        return currentHealth;
     }
 }
