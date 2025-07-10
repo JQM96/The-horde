@@ -15,13 +15,20 @@ public class AmmoPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Shooting shootingComponent = collision.GetComponent<Shooting>();
+        WeaponManager weaponManager = collision.GetComponent<WeaponManager>();
 
-        if (shootingComponent != null)
+        if (weaponManager != null)
         {
-            //shootingComponent.AddMagsizeToRandomWeapon();
-            AudioManager.PlaySound(pickupSound);
-            Destroy(gameObject);
+            Weapon w = weaponManager.GetRandomWeapon();
+
+            if (w != null)
+            {
+                MessageBox.instance?.SpawnMessage("Found " + w.weaponName + " ammo");
+
+                AudioManager.PlaySound(pickupSound);
+
+                Destroy(gameObject);
+            }
         }
     }
 }

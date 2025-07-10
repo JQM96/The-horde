@@ -46,4 +46,17 @@ public class WeaponManager : MonoBehaviour
     {
         weapons.Add(newWeapon);
     }
+
+    public Weapon GetRandomWeapon()
+    {
+        if (weapons.Count > 0)
+        {
+            return weapons[Random.Range(0, weapons.Count)];
+        }
+        else
+        {
+            return null;
+        }
+        
+    }
 }
