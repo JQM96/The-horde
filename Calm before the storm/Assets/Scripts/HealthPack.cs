@@ -25,7 +25,7 @@ public class HealthPack : MonoBehaviour
         {
             collision.GetComponent<Health>().Heal(randomHeal);
 
-            MessageBox.instance.SpawnMessage("HEALED!");
+            MessageBox.instance?.SpawnMessage("HEALED!");
 
             AudioManager.PlaySound(pickUpSound);
             Destroy(gameObject);
