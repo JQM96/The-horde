@@ -25,6 +25,9 @@ public class WeaponPickup : MonoBehaviour
             weaponManager.AddWeapon(weapon);
 
             AudioManager.PlaySound(pickupSound, true);
+
+            MessageBox.instance?.SpawnMessage("Picked up " + weapon.weaponName);
+
             Destroy(gameObject);
         }
     }
