@@ -12,6 +12,11 @@ public class Health : MonoBehaviour
     public event EventHandler OnHealthReachZero;
     public event EventHandler OnDamage;
 
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+    }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
